@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Supervivencia en el Titanic</title>
+    <style>
+        :root {
+            --primary-color: #1a5276;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        h3 {
+            color: var(--dark-color);
+            margin: 1.5rem 0 0.5rem;
+        }
+        
+        section {
+            background-color: white;
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .intro {
+            background-color: var(--light-color);
+            border-left: 5px solid var(--primary-color);
+        }
+        
+        .problem {
+            background-color: #e8f4fc;
+            border-left: 5px solid var(--secondary-color);
+        }
+        
+        .objectives {
+            background-color: #f0f7ff;
+            border-left: 5px solid var(--accent-color);
+        }
+        
+        .justification {
+            background-color: #fff9e6;
+            border-left: 5px solid #f1c40f;
+        }
+        
+        .scope {
+            background-color: #e8f6f3;
+            border-left: 5px solid #16a085;
+        }
+        
+        .variables {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .variable-card {
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .variable-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .methodology {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .method-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        
+        .method-card h4 {
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+        
+        ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight {
+            background-color: #fffacd;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 1.5rem;
+            }
+            
+            .variables, .methodology {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Análisis de Supervivencia en el Titanic</h1>
+            <p>Un estudio sobre la influencia del género y la edad en la supervivencia</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section class="intro">
+            <h2>Introducción</h2>
+            <p>El Titanic, el barco más lujoso de su época, se hundió en su viaje inaugural desde Southampton a Nueva York. La noche del 14 de abril de 1912, chocó contra un iceberg en el Atlántico Norte. En apenas unas horas, la nave se partió y se hundió en las heladas aguas.</p>
+            <p>De las aproximadamente 2,224 personas a bordo, más de 1,500 perdieron la vida, en una de las mayores tragedias marítimas. La escasez de botes salvavidas, insuficientes para todos los pasajeros, fue un factor crucial en la alta mortalidad.</p>
+            <p>Existio un protocolo no escrito de <span class="highlight">"mujeres y niños primero"</span>, pero si este se aplicó de manera efectiva es una de las preguntas clave que busca responder esta investigación. La tragedia conmocionó al mundo y provocó una revisión total de los reglamentos de seguridad marítima. Su legado perdura en la cultura popular, simbolizando los límites de la tecnología frente a la naturaleza.</p>
+        </section>
+        
+        <section class="problem">
+            <h2>Planteamiento del Problema</h2>
+            <p>El naufragio del Titanic reveló importantes discrepancias en los protocolos de salvamento, donde factores como el género y la edad pudieron influir en las oportunidades de supervivencia.</p>
+            <p>A partir de una muestra representativa de pasajeros, esta investigación busca responder preguntas cruciales como:</p>
+            <ul>
+                <li>¿Realmente se privilegió la supervivencia femenina sobre la masculina?</li>
+                <li>¿Los niños y adultos mayores tuvieron prioridad real en el rescate?</li>
+                <li>¿Cómo se distribuyeron las edades entre supervivientes y no supervivientes?</li>
+                <li>¿Existieron diferencias significativas en la composición demográfica entre ambos grupos?</li>
+            </ul>
+            <p>Este estudio se centra exclusivamente en analizar la relación entre variables sexo y edad con la supervivencia en el hundimiento del Titanic. Mediante análisis estadístico descriptivo y comparativo, se examinarán los patrones de supervivencia desagregados por género y grupos etarios, con el objetivo de determinar si existió un perfil demográfico característico entre los sobrevivientes.</p>
+            <p>La investigación aportará evidencia concreta sobre la aplicación real de los protocolos de salvamento y el papel que jugaron el género y la edad como factores determinantes en la supervivencia durante una de las mayores tragedias marítimas de la historia.</p>
+        </section>
+        
+        <section class="objectives">
+            <h2>Objetivos</h2>
+            <h3>Objetivo General:</h3>
+            <p>Analizar la influencia del sexo y la edad en la supervivencia de los pasajeros del Titanic.</p>
+            
+            <h3>Objetivos Específicos:</h3>
+            <ul>
+                <li>Determinar la tasa de supervivencia global por sexo (hombres vs. mujeres).</li>
+                <li>Identificar la distribución de edades entre supervivientes y no supervivientes.</li>
+                <li>Clasificar a los pasajeros en rangos etarios (niños, adultos, adultos mayores) y evaluar su supervivencia.</li>
+                <li>Establecer si existió un patrón de preferencia por algún grupo demográfico (mujeres y niños).</li>
+            </ul>
+        </section>
+        
+        <section class="justification">
+            <h2>Justificación</h2>
+            <p>El análisis de sexo y edad en contextos de desastre es crucial para entender las dinámicas sociales y los sesgos en protocolos de emergencia. En el caso del Titanic, este enfoque permite verificar la aplicación real de la norma no escrita de <span class="highlight">"mujeres y niños primero"</span>.</p>
+            <p>Desde una perspectiva formativa, trabajar con estas variables ofrece una base clara para practicar análisis univariantes y bivariantes, útiles en estadística descriptiva y ciencias sociales.</p>
+        </section>
+        
+        <section class="scope">
+            <h2>Alcance de la Investigación</h2>
+            <h3>Población y Muestra</h3>
+            <ul>
+                <li><strong>Población de estudio:</strong> Pasajeros del Titanic incluidos en la muestra disponible</li>
+                <li><strong>Tamaño muestral:</strong> 891 registros de pasajeros</li>
+                <li><strong>Representatividad:</strong> Muestra parcial del total de pasajeros del Titanic</li>
+            </ul>
+            
+            <h3>Variables de Estudio</h3>
+            <div class="variables">
+                <div class="variable-card">
+                    <h4>Variable Resultado</h4>
+                    <p><strong>Supervivencia</strong> (Sobrevivió: Sí/No)</p>
+                </div>
+                <div class="variable-card">
+                    <h4>Variables Independientes</h4>
+                    <p><strong>Sexo</strong> (Hombre/Mujer)</p>
+                    <p><strong>Edad</strong> (en años continuos y clasificada en rangos etarios)</p>
+                </div>
+            </div>
+            
+            <h3>Enfoque Metodológico</h3>
+            <ul>
+                <li><strong>Tipo de análisis:</strong> Descriptivo y comparativo</li>
+                <li><strong>Nivel de medición:</strong> Univariante y bivariante</li>
+            </ul>
+            
+            <div class="methodology">
+                <div class="method-card">
+                    <h4>Técnicas para Variables Cualitativas (Sexo, Supervivencia)</h4>
+                    <ul>
+                        <li>Frecuencias absolutas: Conteo simple de casos por categoría</li>
+                        <li>Frecuencias relativas: Porcentajes de distribución</li>
+                        <li>Proporciones: Razones entre categorías</li>
+                        <li>Moda: Categoría con mayor frecuencia</li>
+                    </ul>
+                </div>
+                
+                <div class="method-card">
+                    <h4>Técnicas para Variables Cuantitativas (Edad)</h4>
+                    <p><strong>Medidas de tendencia central:</strong></p>
+                    <ul>
+                        <li>Media aritmética: Promedio de edades</li>
+                        <li>Mediana: Valor central de la distribución</li>
+                        <li>Moda: Valor más frecuente</li>
+                    </ul>
+                    
+                    <p><strong>Medidas de dispersión:</strong></p>
+                    <ul>
+                        <li>Rango: Diferencia entre valor máximo y mínimo</li>
+                        <li>Desviación estándar: Dispersión alrededor de la media</li>
+                        <li>Rango intercuartílico: Distancia entre Q1 y Q3</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Análisis de Supervivencia en el Titanic - Estudio de la influencia del género y la edad</p>
+        </div>
+    </footer>
+</body>
+</html>
