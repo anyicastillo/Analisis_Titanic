@@ -11,70 +11,413 @@ output:
     highlight: tango
     code_folding: "hide"
     df_print: paged
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 
-```{r setup, include=FALSE}
+
+```{r setup}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
+
 # Introduccion
 
-El Titanic, el barco más lujoso de su época, se hundió en su viaje inaugural desde Southampton a
-Nueva York. La noche del 14 de abril de 1912, chocó contra un iceberg en el Atlántico Norte. En
-apenas unas horas, la nave se partió y se hundió en las heladas aguas. De las aproximadamente
-2,224 personas a bordo, más de 1,500 perdieron la vida, en una de las mayores tragedias
-marítima. La escasez de botes salvavidas, insuficientes para todos los pasajeros, fue un factor
-crucial en la alta mortalidad. Existió un protocolo no escrito de "mujeres y niños primero", pero si
-este se aplicó de manera efectiva es una de las preguntas clave que busca responder esta
-investigación. La tragedia conmocionó al mundo y provocó una revisión total de los reglamentos
-de seguridad marítima. Su legado perdura en la cultura popular, simbolizando los límites de la
-tecnología frente a la naturaleza.
+El Titanic, el barco más lujoso de su época, se hundió en su viaje
+inaugural desde Southampton a Nueva York. La noche del 14 de abril de
+1912, chocó contra un iceberg en el Atlántico Norte. En apenas unas
+horas, la nave se partió y se hundió en las heladas aguas. De las
+aproximadamente 2,224 personas a bordo, más de 1,500 perdieron la vida,
+en una de las mayores tragedias marítima. La escasez de botes
+salvavidas, insuficientes para todos los pasajeros, fue un factor
+crucial en la alta mortalidad. Existió un protocolo no escrito de
+"mujeres y niños primero", pero si este se aplicó de manera efectiva es
+una de las preguntas clave que busca responder esta investigación. La
+tragedia conmocionó al mundo y provocó una revisión total de los
+reglamentos de seguridad marítima. Su legado perdura en la cultura
+popular, simbolizando los límites de la tecnología frente a la
+naturaleza.
 
 # Planteamiento de la Investigación
 
 ## 1. Planteamiento del Problema
 
-El naufragio del Titanic reveló importantes discrepancias en los protocolos de salvamento, donde
-factores como el género y la edad pudieron influir en las oportunidades de supervivencia. Por
-ejemplo, existió la política de "mujeres y niños primero", a partir de una muestra representativa de
-pasajeros, esta investigación busca responder preguntas cruciales como: ¿Realmente se privilegió
-la supervivencia femenina sobre la masculina? ¿Los niños y adultos mayores tuvieron prioridad
-real en el rescate? ¿Cómo se distribuyeron las edades entre supervivientes y no supervivientes?
-¿Existieron diferencias significativas en la composición demográfica entre ambos grupos?
+El naufragio del Titanic reveló importantes discrepancias en los
+protocolos de salvamento, donde factores como el género y la edad
+pudieron influir en las oportunidades de supervivencia. Por ejemplo,
+existió la política de "mujeres y niños primero", a partir de una
+muestra representativa de pasajeros, esta investigación busca responder
+preguntas cruciales como: ¿Realmente se privilegió la supervivencia
+femenina sobre la masculina? ¿Los niños y adultos mayores tuvieron
+prioridad real en el rescate? ¿Cómo se distribuyeron las edades entre
+supervivientes y no supervivientes? ¿Existieron diferencias
+significativas en la composición demográfica entre ambos grupos?
 
-Este estudio se centra exclusivamente en analizar la relación entre variables sexo y edad con la
-supervivencia en el hundimiento del Titanic. Mediante análisis estadístico descriptivo y
-comparativo, se examinarán los patrones de supervivencia desagregados por género y grupos
-etarios, con el objetivo de determinar si existió un perfil demográfico característico entre los
-sobrevivientes.
+Este estudio se centra exclusivamente en analizar la relación entre
+variables sexo y edad con la supervivencia en el hundimiento del
+Titanic. Mediante análisis estadístico descriptivo y comparativo, se
+examinarán los patrones de supervivencia desagregados por género y
+grupos etarios, con el objetivo de determinar si existió un perfil
+demográfico característico entre los sobrevivientes.
 
-La investigación aportará evidencia concreta sobre la aplicación real de los protocolos de
-salvamento y el papel que jugaron el género y la edad como factores determinantes en la
-supervivencia durante una de las mayores tragedias marítimas de la historia.
+La investigación aportará evidencia concreta sobre la aplicación real de
+los protocolos de salvamento y el papel que jugaron el género y la edad
+como factores determinantes en la supervivencia durante una de las
+mayores tragedias marítimas de la historia.
 
 ## 2. Objetivo
 
 ### 2.1 Objetivo General
 
-Analizar la influencia del sexo y la edad en la supervivencia de los pasajeros del Titanic.
+Analizar la influencia del sexo y la edad en la supervivencia de los
+pasajeros del Titanic.
 
 ### 2.2 Objetivo Espefico
 
-* Determinar la tasa de supervivencia global por sexo (hombres vs. mujeres).
-* Identificar la distribución de edades entre supervivientes y no supervivientes.
-* Clasificar a los pasajeros en rangos etarios (niños, adultos, adultos mayores) y evaluar su supervivencia.
-* Establecer si existió un patrón de preferencia por algún grupo demográfico (mujeres y niños).
+-   Determinar la tasa de supervivencia global por sexo (hombres vs.
+    mujeres).
+-   Identificar la distribución de edades entre supervivientes y no
+    supervivientes.
+-   Clasificar a los pasajeros en rangos etarios (niños, adultos,
+    adultos mayores) y evaluar su supervivencia.
+-   Establecer si existió un patrón de preferencia por algún grupo
+    demográfico (mujeres y niños).
 
 ## 3. Justificación
 
-El análisis de sexo y edad en contextos de desastre es crucial para entender las dinámicas sociales
-y los sesgos en protocolos de emergencia. En el caso del Titanic, este enfoque permite verificar la
-aplicación real de la norma no escrita de "mujeres y niños primero". Desde una perspectiva
-formativa, trabajar con estas variables ofrece una base clara para practicar análisis univariantes y
-bivariantes, útiles en estadística descriptiva y ciencias sociales.
+El análisis de sexo y edad en contextos de desastre es crucial para
+entender las dinámicas sociales y los sesgos en protocolos de
+emergencia. En el caso del Titanic, este enfoque permite verificar la
+aplicación real de la norma no escrita de "mujeres y niños primero".
+Desde una perspectiva formativa, trabajar con estas variables ofrece una
+base clara para practicar análisis univariantes y bivariantes, útiles en
+estadística descriptiva y ciencias sociales.
 
-## 4. Alcance de la Investigación
+```{r Cargar Paquetes , include=FALSE}
 
-### 4.1 Población y Muestra
+# Cargar librerías
+
+if(!require(tidyverse)) install.packages("tidyverse")
+if(!require(ggplot2)) install.packages("ggplot2")
+if(!require(kableExtra)) install.packages("kableExtra")
+
+library(tidyverse)
+library(ggplot2)
+library(kableExtra)
+
+```
+
+```{r Carga y Exploración de Datos}
+
+# Cargar dataset del Titanic
+titanic_data <- read.csv("https://raw.githubusercontent.com/anyicastillo/Analisis_Titanic/refs/heads/main/Titanic-Dataset.csv", stringsAsFactors = FALSE)
+
+# Ver estructura inicial
+cat("Dimensiones del dataset:", dim(titanic_data), "\n")
+cat("Variables disponibles:", names(titanic_data), "\n\n")
+
+# Mostrar primeras filas
+head(titanic_data) %>% kable() %>% kable_styling(bootstrap_options = "striped")
+
+# Información básica del dataset
+str(titanic_data)
+summary(titanic_data)
+
+```
+
+```{r Preprocesamiento y Limpieza}
+
+# Crear copia del dataset para análisis
+df <- titanic_data
+
+# Renombrar variables en español
+df <- df %>%
+  rename(
+    Sobrevivio = Survived,
+    Sexo = Sex,
+    Edad = Age,
+    Clase = Pclass
+  )
+
+# Convertir variables categóricas
+df <- df %>%
+  mutate(
+    Sobrevivio = factor(Sobrevivio, levels = c(0, 1), labels = c("No", "Sí")),
+    Sexo = factor(Sexo, levels = c("male", "female"), labels = c("Hombre", "Mujer")),
+    Clase = factor(Clase, levels = c(1, 2, 3), labels = c("Primera", "Segunda", "Tercera"))
+  )
+
+# Crear grupos etarios
+df <- df %>%
+  mutate(
+    Grupo_Edad = case_when(
+      Edad < 12 ~ "Niño (0-11)",
+      Edad >= 12 & Edad < 18 ~ "Adolescente (12-17)",
+      Edad >= 18 & Edad < 60 ~ "Adulto (18-59)",
+      Edad >= 60 ~ "Adulto Mayor (60+)",
+      is.na(Edad) ~ "Edad Desconocida"
+    ),
+    Grupo_Edad = factor(Grupo_Edad, 
+                       levels = c("Niño (0-11)", "Adolescente (12-17)", "Adulto (18-59)", 
+                                 "Adulto Mayor (60+)", "Edad Desconocida"))
+  )
+
+# Verificar transformaciones
+cat("Resumen después del preprocesamiento:\n")
+table(df$Sobrevivio) %>% kable() %>% kable_styling()
+
+```
+
+```{r Análisis Descriptivo Univariante Variable: Supervivencia }
+
+# Análisis de supervivencia global
+superv_global <- df %>%
+  count(Sobrevivio) %>%
+  mutate(Porcentaje = round(n/sum(n)*100, 2))
+
+cat("Distribución de Supervivencia Global:\n")
+superv_global %>% kable() %>% kable_styling()
+
+# Gráfico de supervivencia global
+ggplot(superv_global, aes(x = Sobrevivio, y = n, fill = Sobrevivio)) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = paste0(n, " (", Porcentaje, "%)")), vjust = -0.5) +
+  labs(title = "Distribución de Supervivencia en el Titanic",
+       x = "Sobrevivió", y = "Número de Pasajeros") +
+  theme_minimal() +
+  scale_fill_manual(values = c("No" = "#e74c3c", "Sí" = "#2ecc71"))
+
+```
+
+```{r Análisis Descriptivo Univariante Variable: Sexo }
+
+# Análisis de distribución por sexo
+dist_sexo <- df %>%
+  count(Sexo) %>%
+  mutate(Porcentaje = round(n/sum(n)*100, 2))
+
+cat("Distribución por Sexo:\n")
+dist_sexo %>% kable() %>% kable_styling()
+
+# Gráfico de distribución por sexo
+ggplot(dist_sexo, aes(x = Sexo, y = n, fill = Sexo)) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = paste0(n, " (", Porcentaje, "%)")), vjust = -0.5) +
+  labs(title = "Distribución de Pasajeros por Sexo",
+       x = "Sexo", y = "Número de Pasajeros") +
+  theme_minimal() +
+  scale_fill_manual(values = c("Hombre" = "#3498db", "Mujer" = "#e91e63"))
 
 
+```
+
+```{r Análisis Descriptivo Univariante Variable: Edad }
+
+# Análisis descriptivo de edad
+estadisticas_edad <- df %>%
+  summarise(
+    Media = mean(Edad, na.rm = TRUE),
+    Mediana = median(Edad, na.rm = TRUE),
+    Desviacion = sd(Edad, na.rm = TRUE),
+    Minimo = min(Edad, na.rm = TRUE),
+    Maximo = max(Edad, na.rm = TRUE),
+    NA_count = sum(is.na(Edad))
+  )
+
+cat("Estadísticas Descriptivas de la Edad:\n")
+estadisticas_edad %>% kable() %>% kable_styling()
+
+# Histograma de edades
+ggplot(df, aes(x = Edad)) +
+  geom_histogram(binwidth = 5, fill = "#9b59b6", alpha = 0.7, color = "white") +
+  labs(title = "Distribución de Edades en el Titanic",
+       x = "Edad", y = "Frecuencia") +
+  theme_minimal()
+
+```
+
+```{r Análisis Descriptivo Univariante Variable: Grupos Etarios }
+
+# Análisis de grupos etarios
+dist_etaria <- df %>%
+  count(Grupo_Edad) %>%
+  mutate(Porcentaje = round(n/sum(n)*100, 2))
+
+cat("Distribución por Grupos Etarios:\n")
+dist_etaria %>% kable() %>% kable_styling()
+
+# Gráfico de grupos etarios
+ggplot(dist_etaria, aes(x = Grupo_Edad, y = n, fill = Grupo_Edad)) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = paste0(n, " (", Porcentaje, "%)")), vjust = -0.5, size = 3) +
+  labs(title = "Distribución de Pasajeros por Grupos Etarios",
+       x = "Grupo de Edad", y = "Número de Pasajeros") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+```{r Supervivencia por Sexo }
+
+# Tabla de contingencia: Supervivencia vs Sexo
+tabla_sexo <- table(df$Sexo, df$Sobrevivio)
+prop_sexo <- prop.table(tabla_sexo, margin = 1) * 100
+
+cat("Tabla de Contingencia: Supervivencia por Sexo\n")
+tabla_sexo %>% kable() %>% kable_styling()
+
+cat("\nPorcentajes por Fila (Sexo):\n")
+prop_sexo %>% round(2) %>% kable() %>% kable_styling()
+
+# Gráfico de supervivencia por sexo
+df %>%
+  count(Sexo, Sobrevivio) %>%
+  group_by(Sexo) %>%
+  mutate(Porcentaje = n/sum(n)*100) %>%
+  ggplot(aes(x = Sexo, y = Porcentaje, fill = Sobrevivio)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  geom_text(aes(label = paste0(round(Porcentaje, 1), "%")), 
+            position = position_dodge(width = 0.9), vjust = -0.5) +
+  labs(title = "Tasa de Supervivencia por Sexo",
+       x = "Sexo", y = "Porcentaje", fill = "Sobrevivió") +
+  theme_minimal() +
+  scale_fill_manual(values = c("No" = "#e74c3c", "Sí" = "#2ecc71"))
+
+
+```
+
+```{r Supervivencia por Grupos Etarios }
+
+# Tabla de contingencia: Supervivencia vs Grupo de Edad
+tabla_edad <- table(df$Grupo_Edad, df$Sobrevivio)
+prop_edad <- prop.table(tabla_edad, margin = 1) * 100
+
+cat("Tabla de Contingencia: Supervivencia por Grupo de Edad\n")
+tabla_edad %>% kable() %>% kable_styling()
+
+cat("\nPorcentajes por Fila (Grupo de Edad):\n")
+prop_edad %>% round(2) %>% kable() %>% kable_styling()
+
+# Gráfico de supervivencia por grupos etarios
+df %>%
+  count(Grupo_Edad, Sobrevivio) %>%
+  group_by(Grupo_Edad) %>%
+  mutate(Porcentaje = n/sum(n)*100) %>%
+  ggplot(aes(x = Grupo_Edad, y = Porcentaje, fill = Sobrevivio)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  geom_text(aes(label = paste0(round(Porcentaje, 1), "%")), 
+            position = position_dodge(width = 0.9), vjust = -0.5, size = 3) +
+  labs(title = "Tasa de Supervivencia por Grupo de Edad",
+       x = "Grupo de Edad", y = "Porcentaje", fill = "Sobrevivió") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_fill_manual(values = c("No" = "#e74c3c", "Sí" = "#2ecc71"))
+
+```
+
+```{r Análisis Combinado: Sexo y Grupos Etarios }
+
+# Análisis combinado de sexo y grupos etarios
+analisis_combinado <- df %>%
+  group_by(Sexo, Grupo_Edad) %>%
+  summarise(
+    Total = n(),
+    Sobrevivientes = sum(Sobrevivio == "Sí"),
+    Tasa_Supervivencia = round(Sobrevivientes/Total * 100, 2),
+    .groups = 'drop'
+  )
+
+cat("Análisis Combinado: Sexo y Grupo de Edad\n")
+analisis_combinado %>% kable() %>% kable_styling()
+
+# Heatmap de supervivencia
+ggplot(analisis_combinado, aes(x = Sexo, y = Grupo_Edad, fill = Tasa_Supervivencia)) +
+  geom_tile(color = "white") +
+  geom_text(aes(label = paste0(Tasa_Supervivencia, "%")), color = "white", size = 4) +
+  scale_fill_gradient(low = "#e74c3c", high = "#2ecc71", name = "Tasa de\nSupervivencia (%)") +
+  labs(title = "Mapa de Calor: Tasa de Supervivencia por Sexo y Grupo de Edad",
+       x = "Sexo", y = "Grupo de Edad") +
+  theme_minimal()
+
+```
+
+```{r Estadísticas Descriptivas por Grupo de Supervivencia}
+
+# Estadísticas de edad por grupo de supervivencia
+estadisticas_edad_superv <- df %>%
+  group_by(Sobrevivio) %>%
+  summarise(
+    n = n(),
+    Media_Edad = mean(Edad, na.rm = TRUE),
+    Mediana_Edad = median(Edad, na.rm = TRUE),
+    SD_Edad = sd(Edad, na.rm = TRUE),
+    Min_Edad = min(Edad, na.rm = TRUE),
+    Max_Edad = max(Edad, na.rm = TRUE),
+    .groups = 'drop'
+  )
+
+cat("Estadísticas de Edad por Estado de Supervivencia:\n")
+estadisticas_edad_superv %>% kable(digits = 2) %>% kable_styling()
+
+# Boxplot de edades por supervivencia
+ggplot(df, aes(x = Sobrevivio, y = Edad, fill = Sobrevivio)) +
+  geom_boxplot(alpha = 0.7) +
+  labs(title = "Distribución de Edades por Estado de Supervivencia",
+       x = "Sobrevivió", y = "Edad") +
+  theme_minimal() +
+  scale_fill_manual(values = c("No" = "#e74c3c", "Sí" = "#2ecc71"))
+
+```
+
+```{r Análisis de "Mujeres y Niños Primero"}
+
+# Definir grupo "mujeres y niños"
+df <- df %>%
+  mutate(
+    Mujer_Niño = ifelse(Sexo == "Mujer" | Grupo_Edad == "Niño (0-11)", "Mujer o Niño", "Hombre Adulto/Adolescente"),
+    Mujer_Niño = factor(Mujer_Niño)
+  )
+
+# Análisis del protocolo
+analisis_protocolo <- df %>%
+  group_by(Mujer_Niño) %>%
+  summarise(
+    Total = n(),
+    Sobrevivientes = sum(Sobrevivio == "Sí"),
+    Tasa_Supervivencia = round(Sobrevivientes/Total * 100, 2),
+    .groups = 'drop'
+  )
+
+cat("Análisis del Protocolo 'Mujeres y Niños Primero':\n")
+analisis_protocolo %>% kable() %>% kable_styling()
+
+# Gráfico comparativo
+ggplot(analisis_protocolo, aes(x = Mujer_Niño, y = Tasa_Supervivencia, fill = Mujer_Niño)) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = paste0(Tasa_Supervivencia, "%")), vjust = -0.5) +
+  labs(title = "Tasa de Supervivencia: Protocolo 'Mujeres y Niños Primero'",
+       x = "Categoría", y = "Tasa de Supervivencia (%)") +
+  theme_minimal() +
+  ylim(0, 100) +
+  scale_fill_manual(values = c("Mujer o Niño" = "#2ecc71", "Hombre Adulto/Adolescente" = "#e74c3c"))
+
+```
+
+```{r Resumen Ejecutivo y Conclusiones}
+# Cálculo de métricas clave
+resumen_final <- list(
+  "Tasa Supervivencia Global" = paste0(round(mean(df$Sobrevivio == "Sí") * 100, 1), "%"),
+  "Tasa Supervivencia Mujeres" = paste0(round(prop_sexo[2,2], 1), "%"),
+  "Tasa Supervivencia Hombres" = paste0(round(prop_sexo[1,2], 1), "%"),
+  "Tasa Supervivencia Niños" = paste0(round(prop_edad[1,2], 1), "%"),
+  "Tasa Supervivencia Mujeres/Niños" = paste0(analisis_protocolo$Tasa_Supervivencia[1], "%"),
+  "Ratio Mujeres/Hombres" = paste0(round(prop_sexo[2,2] / prop_sexo[1,2], 1), ":1")
+)
+
+cat("RESUMEN EJECUTIVO - ANÁLISIS DE SUPERVIVENCIA TITANIC\n\n")
+for(i in seq_along(resumen_final)) {
+  cat(names(resumen_final)[i], ":", resumen_final[[i]], "\n")
+}
+
+```
