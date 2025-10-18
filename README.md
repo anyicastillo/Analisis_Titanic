@@ -13,3 +13,9 @@ femenina sobre la masculina? ¿Los niños y adultos mayores tuvieron
 prioridad real en el rescate? ¿Cómo se distribuyeron las edades entre
 supervivientes y no supervivientes? ¿Existieron diferencias
 significativas en la composición demográfica entre ambos grupos?
+
+## Paso a Seguir para levantar proyecto.
+
+1. Usa el comando `git clone https://github.com/anyicastillo/Analisis_Titanic.git` para clonar el repositorio.
+
+![Static Badge](https://img.shields.io/badge/HTML-red) ![Static Badge](https://img.shields.io/badge/R-blue) ![Static Badge](https://img.shields.io/badge/Python-yellow) 
