@@ -14,7 +14,7 @@ prioridad real en el rescate? ¿Cómo se distribuyeron las edades entre
 supervivientes y no supervivientes? ¿Existieron diferencias
 significativas en la composición demográfica entre ambos grupos?
 
-## Paso a Seguir para levantar proyecto de python.
+## Paso a Seguir para levantar proyecto de Dashboard con streamlit.
 
 1. Usa el comando `git clone https://github.com/anyicastillo/Analisis_Titanic.git` para clonar el repositorio.
 2. Crear un entorno virtual `python -m venv venv`.
@@ -22,7 +22,7 @@ significativas en la composición demográfica entre ambos grupos?
 4. Instala los paquestes necesario para el proyecto `pip install -r requirements.txt`.
 5. Levanta el proyecto con `streamlit run .\app.py`.
 
-## Levantar proyecto de html. 
+## Levantar proyecto hecho en Informe Dinamico con Rmarkdown. 
 
 1. Hacer doble click al proyecto de index.html
 
