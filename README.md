@@ -17,10 +17,11 @@ significativas en la composición demográfica entre ambos grupos?
 ## Paso a Seguir para levantar proyecto de Dashboard con streamlit.
 
 1. Usa el comando `git clone https://github.com/anyicastillo/Analisis_Titanic.git` para clonar el repositorio.
-2. Crear un entorno virtual `python -m venv venv`.
-3. Activar el entorno virtual del proyecto  `venv\Scripts\activate`.
-4. Instala los paquestes necesario para el proyecto `pip install -r requirements.txt`.
-5. Levanta el proyecto con `streamlit run .\app.py`.
+2. Entrar en el proyecto `cd Analisis_Titanic`.
+3. Crear un entorno virtual `python -m venv venv`.
+4. Activar el entorno virtual del proyecto  `venv\Scripts\activate`.
+5. Instala los paquestes necesario para el proyecto `pip install -r requirements.txt`.
+6. Levanta el proyecto con `streamlit run .\app.py`.
 
 ## Levantar proyecto hecho en Informe Dinamico con Rmarkdown. 
 
